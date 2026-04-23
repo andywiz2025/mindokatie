@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Mindokatie Salone</title>
+    
+    <!-- Icons for Social Media -->
+    <link href="https://cloudflare.com" rel="stylesheet">
+    
+    <style>
+        :root {
+            --green: #16a34a;
+            --blue: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background: var(--light); color: var(--dark); }
+
+        /* NAVIGATION (Consistent with all pages) */
+        nav {
+            background: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-size: 22px; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; text-decoration: none; color: inherit; }
+        .logo span { color: var(--green); }
+        .logo b { color: var(--blue); }
+        .nav-links a { text-decoration: none; color: var(--gray); margin-left: 30px; font-weight: 600; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--green); }
+        .nav-links a.active { color: var(--green); border-bottom: 2px solid var(--green); padding-bottom: 5px; }
+
+        /* CONTACT LAYOUT */
+        .contact-container { padding: 80px 8%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; }
+
+        /* FORM STYLING */
+        .form-box { background: white; padding: 40px; border-radius: 30px; shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-box h2 { font-size: 32px; margin-bottom: 10px; }
+        .form-box p { color: var(--gray); margin-bottom: 30px; }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+        .input-group input, .input-group textarea { 
+            width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--blue); }
+        
+        .btn-send { 
+            background: var(--dark); color: white; border: none; padding: 15px 40px; border-radius: 12px; font-weight: 800; cursor: pointer; width: 100%; transition: 0.3s;
+        }
+        .btn-send:hover { background: var(--green); }
+
+        /* INFO & SOCIALS STYLING */
+        .info-box h3 { font-size: 24px; margin-bottom: 25px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px; }
+        .contact-item i { color: var(--green); font-size: 20px; margin-top: 5px; }
+        .contact-item b { display: block; color: var(--dark); font-size: 16px; }
+        .contact-item span { color: var(--gray); font-size: 14px; }
+
+        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 40px; }
+        .social-card { 
+            text-decoration: none; background: white; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #e2e8f0; transition: 0.3s;
+        }
+        .social-card:hover { transform: translateY(-5px); border-color: var(--blue); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .social-card i { font-size: 28px; margin-bottom: 10px; display: block; }
+        
+        /* Social Colors */
+        .fa-whatsapp { color: #25D366; }
+        .fa-facebook { color: #1877F2; }
+        .fa-linkedin { color: #0A66C2; }
+        .fa-envelope { color: var(--blue); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .contact-container { grid-template-columns: 1fr; padding-top: 40px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">MINDO<span>KATIE</span> <b>SALONE</b></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="model.html">Our Model</a>
+            <a href="blog.html">Events</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+    </nav>
+
+    <main class="contact-container">
+        <!-- CONTACT FORM -->
+        <div class="form-box">
+            <h2>Send a Message</h2>
+            <p>Have questions about our micro-loans or want to partner with us? Reach out today.</p>
+            
+            <form action="#">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>How can we help?</label>
+                    <textarea rows="5" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-send">Send Message</button>
+            </form>
+        </div>
+
+        <!-- INFO & SOCIALS -->
+        <div class="info-box">
+            <h3>Get in Touch</h3>
+            
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <b>Headquarters</b>
+                    <span>Kabala, Koinadugu District,<br>Northern Region, Sierra Leone</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <i class="fa-solid fa-user-tie"></i>
+                <div>
+                    <b>Project Manager</b>
+                    <span>Yembeh Mansaray</span>
+                </div>
+            </div>
+
+            <div class="social-grid">
+                <!-- WHATSAPP -->
+                <a href="https://wa.me" class="social-card" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span style="font-weight: bold; color: var(--dark);">WhatsApp</span>
+                </a>
+                <!-- FACEBOOK -->
+                <a href="https://facebook.com" class="social-card" target="_blank">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span style="font-weight: bold; color: var(--dark);">Facebook</span>
+                </a>
+                <!-- LINKEDIN -->
+                <a href="https://linkedin.com" class="social-card" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <span style="font-weight: bold; color: var(--dark);">LinkedIn</span>
+                </a>
+                <!-- EMAIL -->
+                <a href="mailto:info@mindokatie.org" class="social-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span style="font-weight: bold; color: var(--dark);">Email</span>
+                </a>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: white; border-radius: 20px; border: 1px dashed var(--gray);">
+                <p style="font-size: 13px; color: var(--gray);"><b>Note to Partners:</b> We respond to all inquiries within 48 hours. For urgent partnership matters, please use WhatsApp.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="padding: 40px; text-align: center; border-top: 1px solid #eee; color: #94a3b8; font-size: 14px;">
+        <p>© 2024 Mindokatie Salone | Moving Sierra Leone Forward</p>
+    </footer>
+
+</body>
+</html>
