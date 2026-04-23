@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Model | Mindokatie Salone</title>
+
+    <style>
+      /* --- PROFESSIONAL CSS (Matches Home Page) --- */
+      :root {
+        --green: #16a34a;
+        --blue: #2563eb;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --gray: #64748b;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background: white;
+        color: var(--dark);
+      }
+
+      /* NAVIGATION */
+      nav {
+        background: white;
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .logo {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: inherit;
+      }
+      .logo span {
+        color: var(--green);
+      }
+      .logo b {
+        color: var(--blue);
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--gray);
+        margin-left: 30px;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        color: var(--green);
+      }
+      .nav-links a.active {
+        color: var(--green);
+        border-bottom: 2px solid var(--green);
+        padding-bottom: 5px;
+      }
+
+      /* CONTENT HEADER */
+      .page-header {
+        background: var(--dark);
+        color: white;
+        padding: 80px 8%;
+        text-align: center;
+      }
+      .page-header h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .page-header p {
+        font-size: 20px;
+        opacity: 0.8;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* SECTION STYLING */
+      section {
+        padding: 80px 8%;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .flex-row {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        margin-bottom: 100px;
+      }
+      .flex-row.reverse {
+        flex-direction: row-reverse;
+      }
+      .flex-text {
+        flex: 1;
+      }
+      .flex-img {
+        flex: 1;
+      }
+      .flex-img img {
+        width: 100%;
+        border-radius: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+      .highlight {
+        color: var(--green);
+        font-weight: 800;
+      }
+
+      /* STEP BOXES */
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
+      .step-card {
+        background: var(--light);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+      }
+      .step-num {
+        width: 50px;
+        height: 50px;
+        background: var(--green);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-weight: 800;
+        font-size: 20px;
+      }
+
+      /* MOBILE FIXES */
+      @media (max-width: 900px) {
+        .flex-row,
+        .flex-row.reverse {
+          flex-direction: column;
+          text-align: center;
+        }
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo"
+        >MINDO<span>KATIE</span> <b>SALONE</b></a
+      >
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="model.html" class="active">Our Model</a>
+        <a href="blog.html">Events</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <h1>Our Sustainable Model</h1>
+      <p>
+        A unique approach to community growth where local families lead the way.
+      </p>
+    </header>
+
+    <section class="container">
+      <!-- FIRST ROW: KETAAKETI PARTNERSHIP -->
+      <div class="flex-row">
+        <div class="flex-text">
+          <h2>The <span class="highlight">KETAAKETI</span> Partnership</h2>
+          <p>
+            Mindokatie Salone implements the globally recognized
+            <b>KETAAKETI Financing Concept</b>. Unlike traditional aid, this
+            model focuses on <b>Self-Determination</b>. International partners
+            provide the initial startup capital, but the local Mindokatie team
+            and the village communities decide exactly how to use it.
+          </p>
+        </div>
+        <div class="flex-img">
+          <img src="https://unsplash.com" alt="Partner Meeting" />
+        </div>
+      </div>
+
+      <!-- SECOND ROW: MICRO-LOANS -->
+      <div class="flex-row reverse">
+        <div class="flex-text">
+          <h2>0% Interest <span class="highlight">Micro-loans</span></h2>
+          <p>
+            We provide interest-free loans to women in the poorest families of
+            Koinadugu. This allows them to start small businesses—such as market
+            stalls or farming—without the burden of debt. Because there is
+            <b>0% interest</b>, the women can reinvest 100% of their success
+            back into their families.
+          </p>
+        </div>
+        <div class="flex-img">
+          <img src="https://unsplash.com" alt="Local Business" />
+        </div>
+      </div>
+
+      <!-- THE THREE STEPS -->
+      <div style="text-align: center; margin-top: 50px">
+        <h2>The Cycle of Independence</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h4>Support</h4>
+            <p>
+              Mothers receive an interest-free startup loan to begin a small
+              business.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h4>Success</h4>
+            <p>
+              The business earns profit, allowing the family to become
+              financially stable.
+            </p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h4>Education</h4>
+            <p>
+              Profits pay for school uniforms, books, and shoes, keeping
+              children in school long-term.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="
+        padding: 40px;
+        text-align: center;
+        border-top: 1px solid #eee;
+        color: #94a3b8;
+        font-size: 14px;
+        background: var(--light);
+      "
+    >
+      <p>© 2024 Mindokatie Salone | Partnered with KETAAKETI Germany</p>
+    </footer>
+  </body>
+</html>
