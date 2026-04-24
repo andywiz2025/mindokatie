@@ -56,37 +56,47 @@
       .blog-header {
         background: linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(22,163,74,0.25) 100%);
         color: var(--white);
-        padding: 100px 8% 60px;
+        padding: 80px 8% 50px;
         text-align: center;
       }
-      .blog-header h1 { font-family: "Playfair Display", serif; font-size: 52px; margin-bottom: 15px; }
+      .blog-header h1 { font-family: "Playfair Display", serif; font-size: 48px; margin-bottom: 15px; }
       .blog-header h1 em { color: #4ade80; font-style: italic; }
 
-      /* ===== CORE MISSION STRIP ===== */
+      /* ===== MISSION STRIP ===== */
       .mission-strip {
         background: var(--white);
-        padding: 40px 8%;
+        padding: 30px 8%;
         border-bottom: 1px solid #e2e8f0;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
       }
-      .mission-item h4 { color: var(--brand-green); text-transform: uppercase; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px; }
-      .mission-item p { font-size: 14px; color: var(--text-muted); }
+      .mission-item h4 { color: var(--brand-green); text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px; margin-bottom: 8px; }
+      .mission-item p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+      /* ===== MEDIA HUB (RESTORED) ===== */
+      .media-hub { background: #f1f5f9; padding: 25px 8%; border-bottom: 1px solid #e2e8f0; }
+      .media-hub-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .media-btn {
+        display: flex; align-items: center; gap: 12px; padding: 15px 25px; 
+        background: white; border-radius: 12px; text-decoration: none; color: var(--deep-navy);
+        font-weight: 700; transition: 0.3s; border: 1px solid #e2e8f0;
+      }
+      .media-btn:hover { transform: translateY(-3px); border-color: var(--brand-green); color: var(--brand-green); }
+      .media-btn i { font-size: 20px; }
 
       /* ===== FEATURED POST ===== */
-      .featured-section { padding: 60px 8%; max-width: 1200px; margin: 0 auto; }
+      .featured-section { padding: 50px 8%; max-width: 1200px; margin: 0 auto; }
       .featured-card { display: flex; background: white; border-radius: 24px; overflow: hidden; border: 1px solid #e2e8f0; }
       .featured-img { flex: 1; background: #e2e8f0; }
       .featured-img img { width: 100%; height: 100%; object-fit: cover; }
-      .featured-text { flex: 1; padding: 50px; }
-      .badge { background: var(--brand-green); color: white; padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: 800; margin-bottom: 20px; display: inline-block; }
+      .featured-text { flex: 1; padding: 40px; }
+      .badge { background: var(--brand-green); color: white; padding: 4px 12px; border-radius: 50px; font-size: 10px; font-weight: 800; margin-bottom: 15px; display: inline-block; }
 
       /* ===== GRID ===== */
-      .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px 8%; max-width: 1200px; margin: 0 auto; }
+      .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 40px 8%; max-width: 1200px; margin: 0 auto; }
       .card { background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden; }
       .card-body { padding: 25px; }
-      .card-body h3 { margin-bottom: 10px; font-family: "Playfair Display", serif; }
 
       @media (max-width: 900px) { .featured-card { flex-direction: column; } .nav-links { display: none; } }
     </style>
@@ -100,40 +110,53 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="blog.html" class="active">Impact News</a>
-        <a href="impactvideos.html">Videos</a>
         <a href="contact.html">Contact</a>
       </div>
     </nav>
 
     <header class="blog-header">
       <h1>Impact & <em>News</em></h1>
-      <p>Strengthening community wellbeing through sustainable, locally-driven programs.</p>
+      <p>Tracking our journey in moving Sierra Leone forward — one family at a time.</p>
     </header>
 
     <section class="mission-strip">
       <div class="mission-item">
         <h4>Our Mission</h4>
-        <p>To strengthen community wellbeing by delivering sustainable programs in education, waste management, agriculture, and sanitation.</p>
+        <p>Strengthening community wellbeing by delivering sustainable programs in education, waste management, agriculture, and sanitation.</p>
       </div>
       <div class="mission-item">
-        <h4>Our Vision</h4>
-        <p>A Sierra Leone where every community thrives: educated children, healthy families, and equitable economic opportunity.</p>
+        <h4>Our Impact</h4>
+        <p>Supporting 2,700 families across 46 villages in the Koinadugu District with 0% interest financing.</p>
       </div>
       <div class="mission-item">
         <h4>Core Value</h4>
-        <p><b>Community-led action:</b> We listen to and work with community members as equal partners for lasting change.</p>
+        <p><b>Community-led action:</b> Working with local members as partners to ensure lasting independence.</p>
       </div>
     </section>
 
+    <div class="media-hub">
+      <div class="media-hub-inner">
+        <a href="gallery.html" class="media-btn">
+          <i class="fa-solid fa-images" style="color: var(--brand-green);"></i>
+          <span>Photo Gallery</span>
+        </a>
+        <a href="impactvideos.html" class="media-btn">
+          <i class="fa-solid fa-circle-play" style="color: var(--brand-blue);"></i>
+          <span>Impact Videos</span>
+        </a>
+      </div>
+    </div>
+
     <section class="featured-section">
       <div class="featured-card">
-        <div class="featured-img"><img src="finance.jpg" alt="Women Entrepreneurs"></div>
+        <div class="featured-img"><img src="village.png" alt="Community Outreach"></div>
         <div class="featured-text">
-          <span class="badge">Success Story</span>
-          <h2>500+ Interest-Free Loans Issued</h2>
-          <p>Our microfinance scheme provides accessible capital for small-scale women entrepreneurs, increasing microenterprise start-ups and enhancing household incomes across the district.</p>
-          <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
-             <span style="font-weight: 800; color: var(--brand-green);">Impact: 100% Interest-Free</span>
+          <span class="badge">Milestone Reached</span>
+          <h2>Supporting 2,700 Families</h2>
+          <p>Under the leadership of Yembeh Mansaray, Mindokatie Salone has expanded across 46 villages to provide sustainable foundations for independence.</p>
+          <div style="margin-top: 20px; display: flex; gap: 20px;">
+             <div><strong style="color: var(--brand-green); font-size: 20px;">0%</strong><br><small>Interest Rate</small></div>
+             <div><strong style="color: var(--brand-green); font-size: 20px;">46</strong><br><small>Villages</small></div>
           </div>
         </div>
       </div>
@@ -142,28 +165,28 @@
     <section class="blog-grid">
       <div class="card">
         <div class="card-body">
-          <h3>Clean Water for 10,000+</h3>
-          <p>Successfully rehabilitated and constructed water points in Kadanso and Kaponpo, reducing waterborne diseases and expanding safe access.</p>
+          <h3>Loan Cycle #24 Success</h3>
+          <p>50 women in Wara Wara Yagala successfully launched new agricultural ventures with interest-free support.</p>
         </div>
       </div>
-
       <div class="card">
         <div class="card-body">
-          <h3>Plastic Waste Recycling</h3>
-          <p>Reducing pollution through community collection drives and up-cycling workshops, creating cleaner public spaces and new income opportunities.</p>
+          <h3>Back-to-School Distribution</h3>
+          <p>Preparing uniforms and materials for 300+ students in rural Kabala for the new academic term.</p>
         </div>
       </div>
-
-      <div class="card">
+      <div class="card" style="background: var(--deep-navy); color: white;">
         <div class="card-body">
-          <h3>Education & Literacy</h3>
-          <p>Supported over 200 students with learning materials and tutoring to improve school attendance and literacy outcomes in rural communities.</p>
+          <h3>KETAAKETI Partnership</h3>
+          <p>The power of interest-free financing in transforming lives across Sierra Leone.</p>
+          <a href="model.html" style="color: #4ade80; font-weight: 700; text-decoration: none;">Explore the Model →</a>
         </div>
       </div>
     </section>
 
-    <footer style="padding: 60px 8%; text-align: center; background: var(--deep-navy); color: white;">
-      <p>© 2024 Mindokatie Salone | Rooted in Local Leadership</p>
+    <footer style="padding: 40px 8%; text-align: center; border-top: 1px solid #e2e8f0;">
+      <p style="font-weight: 800; color: var(--brand-green);">MINDOKATIE SALONE</p>
+      <p style="font-size: 12px; color: var(--text-muted);">© 2024 Mindokatie Sierra Leone. Moving Sierra Leone Forward.</p>
     </footer>
 
   </body>
