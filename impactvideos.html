@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impact Videos | Mindokatie Salone</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --brand-green: #16a34a;
+        --brand-blue: #2563eb;
+        --deep-navy: #0f172a;
+        --bg-light: #f8fafc;
+        --text-muted: #64748b;
+        --white: #ffffff;
+
+        /* Cinema palette */
+        --cinema-bg: #0a0f1a;
+        --cinema-surface: #111827;
+        --cinema-border: rgba(255,255,255,0.07);
+        --cinema-text: #e2e8f0;
+        --cinema-muted: #64748b;
+        --green-glow: rgba(22,163,74,0.4);
+        --green-soft: rgba(22,163,74,0.12);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--cinema-text);
+        background: var(--cinema-bg);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ===== NAV (matches site) ===== */
+      nav {
+        background: rgba(10, 15, 26, 0.97);
+        backdrop-filter: blur(12px);
+        padding: 12px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--cinema-border);
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+      }
+      .logo-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        gap: 4px;
+      }
+      .logo-box svg { width: 35px; height: 35px; }
+      .logo-box span {
+        font-size: clamp(14px, 3vw, 18px);
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        line-height: 1;
+      }
+      .logo-box span b { color: var(--brand-green); }
+      .logo-box span i { color: #60a5fa; font-style: normal; }
+
+      .nav-links {
+        display: flex;
+        gap: clamp(15px, 2vw, 30px);
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #94a3b8;
+        font-weight: 700;
+        font-size: clamp(11px, 1.2vw, 13px);
+        text-transform: uppercase;
+        transition: 0.3s;
+      }
+      .nav-links a:hover { color: var(--brand-green); }
+      .nav-links a.active {
+        color: var(--brand-green);
+        border-bottom: 2px solid var(--brand-green);
+        padding-bottom: 4px;
+      }
+      .btn-cta {
+        background: var(--brand-blue);
+        color: white !important;
+        padding: 10px 20px;
+        border-radius: 50px;
+        box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+        transition: 0.3s;
+        font-size: clamp(11px, 1.2vw, 13px);
+        display: inline-block;
+        text-decoration: none;
+      }
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37,99,235,0.5);
+      }
+      .mobile-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--cinema-text);
+        cursor: pointer;
+        padding: 8px;
+        z-index: 2001;
+      }
+      #mobileMenu {
+        display: none;
+        background: var(--cinema-surface);
+        width: 100%;
+        position: fixed;
+        top: 55px; left: 0; right: 0;
+        padding: 0;
+        max-height: calc(100vh - 55px);
+        overflow-y: auto;
+        border-bottom: 3px solid var(--brand-green);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        z-index: 1999;
+        animation: slideDown 0.3s ease;
+      }
+      #mobileMenu.active { display: block !important; }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      #mobileMenu a {
+        display: block;
+        padding: 16px 5%;
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--cinema-text);
+        border-bottom: 1px solid var(--cinema-border);
+        font-size: 15px;
+        transition: 0.2s;
+      }
+      #mobileMenu a:first-child { color: var(--brand-green); }
+      #mobileMenu a:last-child { background: var(--brand-blue); color: white; font-weight: 800; border: none; }
+      #mobileMenu a:hover { background: rgba(255,255,255,0.05); color: var(--brand-green); }
+      #mobileMenu a:last-child:hover { background: #1d4ed8; color: white; }
+
+      /* ===== PAGE HERO ===== */
+      .page-hero {
+        padding: clamp(50px, 8vw, 80px) clamp(5%, 8vw, 8%) clamp(30px, 5vw, 50px);
+        text-align: center;
+        position: relative;
+      }
+      .page-hero::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 300px;
+        background: radial-gradient(ellipse, rgba(22,163,74,0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green-soft);
+        border: 1px solid rgba(22,163,74,0.3);
+        color: #4ade80;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 22px;
+      }
+      .page-hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(32px, 7vw, 62px);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+      .page-hero h1 em {
+        color: #4ade80;
+        font-style: italic;
+      }
+      .page-hero p {
+        color: var(--cinema-muted);
+        font-size: clamp(15px, 2vw, 17px);
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      /* ===== MAIN PLAYER STAGE ===== */
+      .player-stage {
+        padding: 0 clamp(5%, 8vw, 8%) clamp(40px, 6vw, 60px);
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: clamp(20px, 3vw, 32px);
+        align-items: start;
+      }
+
+      /* FEATURED PLAYER */
+      .featured-player {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #000;
+        box-shadow:
+          0 0 0 1px var(--cinema-border),
+          0 30px 70px rgba(0,0,0,0.6),
+          0 0 80px rgba(22,163,74,0.08);
+      }
+      .player-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+      }
+      .player-wrapper iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+      .player-info {
+        padding: clamp(20px, 3vw, 28px);
+        background: var(--cinema-surface);
+        border-top: 1px solid var(--cinema-border);
+      }
+      .player-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--green-soft);
+        border: 1px solid rgba(22,163,74,0.3);
+        color: #4ade80;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .player-info h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(18px, 2.5vw, 26px);
+        font-weight: 700;
+        color: var(--cinema-text);
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+      .player-info p {
+        font-size: clamp(13px, 1.4vw, 14px);
+        color: var(--cinema-muted);
+        line-height: 1.65;
+        margin-bottom: 16px;
+      }
+      .player-meta {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .player-meta span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--cinema-muted);
+        font-weight: 600;
+      }
+      .player-meta span i { color: var(--brand-green); font-size: 11px; }
+      .yt-link {
+        margin-left: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #ff4444;
+        font-weight: 800;
+        font-size: 12px;
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        background: rgba(255,68,68,0.08);
+        border: 1px solid rgba(255,68,68,0.2);
+        transition: 0.3s;
+      }
+      .yt-link:hover {
+        background: rgba(255,68,68,0.15);
+        transform: translateY(-1px);
+      }
+
+      /* ===== PLAYLIST SIDEBAR ===== */
+      .playlist-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        background: var(--cinema-surface);
+        border-radius: 20px;
+        border: 1px solid var(--cinema-border);
+        overflow: hidden;
+        max-height: 620px;
+      }
+      .playlist-header {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--cinema-border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+      }
+      .playlist-header h3 {
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--cinema-text);
+      }
+      .playlist-count {
+        font-size: 11px;
+        color: var(--cinema-muted);
+        font-weight: 600;
+      }
+      .playlist-scroll {
+        overflow-y: auto;
+        flex: 1;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.1) transparent;
+      }
+      .playlist-scroll::-webkit-scrollbar { width: 4px; }
+      .playlist-scroll::-webkit-scrollbar-track { background: transparent; }
+      .playlist-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+      .playlist-item {
+        display: flex;
+        gap: 12px;
+        padding: 14px 16px;
+        cursor: pointer;
+        border-bottom: 1px solid var(--cinema-border);
+        transition: all 0.2s;
+        align-items: center;
+        position: relative;
+      }
+      .playlist-item:last-child { border-bottom: none; }
+      .playlist-item:hover { background: rgba(255,255,255,0.04); }
+      .playlist-item.active {
+        background: var(--green-soft);
+        border-left: 3px solid var(--brand-green);
+      }
+      .playlist-item.active .item-title { color: #4ade80; }
+
+      .item-thumb {
+        width: 80px;
+        height: 50px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #1e2736;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .item-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .item-thumb-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: 0.2s;
+      }
+      .playlist-item:hover .item-thumb-overlay,
+      .playlist-item.active .item-thumb-overlay {
+        opacity: 1;
+      }
+      .item-thumb-overlay i { color: white; font-size: 14px; }
+      .playlist-item.active .item-thumb-overlay { background: rgba(22,163,74,0.3); }
+
+      .item-info { flex: 1; min-width: 0; }
+      .item-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--cinema-text);
+        line-height: 1.35;
+        margin-bottom: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .item-meta {
+        font-size: 11px;
+        color: var(--cinema-muted);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .item-meta i { font-size: 9px; }
+
+      /* COMING SOON ITEM */
+      .playlist-item.coming-soon {
+        opacity: 0.45;
+        cursor: default;
+        pointer-events: none;
+      }
+      .coming-soon-tag {
+        font-size: 9px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: rgba(37,99,235,0.15);
+        color: #60a5fa;
+        border: 1px solid rgba(37,99,235,0.2);
+        padding: 2px 8px;
+        border-radius: 50px;
+        flex-shrink: 0;
+      }
+
+      /* ADD VIDEO STRIP */
+      .add-video-note {
+        padding: 14px 16px;
+        background: rgba(22,163,74,0.06);
+        border-top: 1px solid var(--cinema-border);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .add-video-note i { color: var(--brand-green); font-size: 14px; flex-shrink: 0; }
+      .add-video-note p { font-size: 11px; color: var(--cinema-muted); line-height: 1.4; }
+      .add-video-note strong { color: var(--cinema-text); }
+
+      /* ===== STATS STRIP ===== */
+      .stats-strip {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: clamp(20px, 4vw, 40px) clamp(5%, 8vw, 8%);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(12px, 2vw, 24px);
+        border-top: 1px solid var(--cinema-border);
+        border-bottom: 1px solid var(--cinema-border);
+      }
+      .stat-box {
+        text-align: center;
+        padding: clamp(16px, 3vw, 24px) 12px;
+      }
+      .stat-box-num {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 900;
+        color: #4ade80;
+        display: block;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-box-label {
+        font-size: clamp(11px, 1.2vw, 13px);
+        font-weight: 700;
+        color: var(--cinema-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        padding: clamp(40px, 6vw, 60px) 8%;
+        text-align: center;
+        border-top: 1px solid var(--cinema-border);
+        background: var(--cinema-surface);
+        margin-top: clamp(40px, 6vw, 80px);
+      }
+      .footer-brand { font-weight: 800; color: var(--brand-green); margin-bottom: 8px; font-size: 14px; }
+      .footer-sub { color: var(--cinema-muted); font-size: 14px; margin-bottom: 24px; }
+      .footer-social { display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; }
+      .footer-social a {
+        width: 40px; height: 40px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid var(--cinema-border);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--cinema-muted);
+        font-size: 15px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+      .footer-social a:hover {
+        background: var(--brand-green);
+        color: white;
+        border-color: var(--brand-green);
+        transform: translateY(-2px);
+      }
+      .footer-copy { font-size: 12px; color: #475569; }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1024px) {
+        .player-stage { grid-template-columns: 1fr; }
+        .playlist-sidebar { max-height: none; }
+        .playlist-scroll { max-height: 400px; }
+        .stats-strip { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .mobile-btn { display: block; }
+        .player-meta { flex-wrap: wrap; }
+        .yt-link { margin-left: 0; }
+      }
+      @media (max-width: 480px) {
+        nav { padding: 10px 4%; }
+        .logo-box svg { width: 30px; height: 30px; }
+        .player-stage { padding: 0 4% 40px; }
+        .page-hero { padding-left: 4%; padding-right: 4%; }
+        .stats-strip { padding-left: 4%; padding-right: 4%; grid-template-columns: repeat(2, 1fr); }
+        .featured-player { border-radius: 16px; }
+        #mobileMenu { top: 50px; max-height: calc(100vh - 50px); }
+        #mobileMenu a { padding: 14px 4%; font-size: 14px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ===== NAV ===== -->
+    <nav>
+      <a href="index.html" class="logo-box">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="45" r="35" stroke="#16a34a" stroke-width="6" stroke-dasharray="160 60"/>
+          <path d="M35 55 L50 30 L65 55" stroke="#2563eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="50" cy="20" r="4" fill="#16a34a"/>
+        </svg>
+        <span><b>MINDO</b><i>KATIE</i></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="model.html">Our Model</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="btn-cta">Partner With Us</a>
+      </div>
+
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</button>
+
+      <div id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="model.html">Our Model</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Partner With Us</a>
+      </div>
+    </nav>
+
+    <!-- ===== PAGE HERO ===== -->
+    <header class="page-hero">
+      <div class="hero-eyebrow">
+        <i class="fa-solid fa-circle-play fa-beat-fade"></i>
+        Field Documentation
+      </div>
+      <h1>Impact <em>Videos</em></h1>
+      <p>Real stories from Koinadugu District — watch how sustainable cooperation changes lives.</p>
+    </header>
+
+    <!-- ===== PLAYER STAGE ===== -->
+    <div class="player-stage">
+
+      <!-- MAIN PLAYER -->
+      <div class="featured-player">
+        <div class="player-wrapper">
+          <iframe
+            id="mainPlayer"
+            src="https://www.youtube.com/embed/ML_5W3UAcjk?rel=0&modestbranding=1&color=white"
+            title="Mindokatie Salone — Impact Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="player-info">
+          <div class="player-badge"><i class="fa-solid fa-star"></i> Featured</div>
+          <h2 id="playerTitle">Mindokatie Salone — Moving Sierra Leone Forward</h2>
+          <p id="playerDesc">A documentary look at our work in Koinadugu District — from micro-loan distribution to school supply deliveries in Wara Wara Yagala Chiefdom.</p>
+          <div class="player-meta">
+            <span><i class="fa-solid fa-location-dot"></i> Kabala, Sierra Leone</span>
+            <span><i class="fa-solid fa-calendar"></i> 2024</span>
+            <span><i class="fa-solid fa-users"></i> Mindokatie Salone</span>
+            <a
+              id="ytDirectLink"
+              href="https://youtu.be/ML_5W3UAcjk?si=EVE_7h-vitu2DszX"
+              target="_blank"
+              class="yt-link">
+              <i class="fa-brands fa-youtube"></i> Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAYLIST SIDEBAR -->
+      <div class="playlist-sidebar">
+        <div class="playlist-header">
+          <h3>Playlist</h3>
+          <span class="playlist-count" id="playlistCount">1 video</span>
+        </div>
+
+        <div class="playlist-scroll" id="playlistScroll">
+
+          <!-- VIDEO 1 — ACTIVE -->
+          <div class="playlist-item active"
+            data-id="ML_5W3UAcjk"
+            data-title="Mindokatie Salone — Moving Sierra Leone Forward"
+            data-desc="A documentary look at our work in Koinadugu District — from micro-loan distribution to school supply deliveries in Wara Wara Yagala Chiefdom."
+            data-year="2024"
+            data-yt="https://youtu.be/ML_5W3UAcjk?si=EVE_7h-vitu2DszX"
+            onclick="loadVideo(this)">
+            <div class="item-thumb">
+              <img src="https://img.youtube.com/vi/ML_5W3UAcjk/mqdefault.jpg" alt="Thumbnail" />
+              <div class="item-thumb-overlay"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="item-info">
+              <div class="item-title">Mindokatie Salone — Moving Sierra Leone Forward</div>
+              <div class="item-meta"><i class="fa-solid fa-calendar"></i> 2024</div>
+            </div>
+          </div>
+
+          <!-- PLACEHOLDER — COMING SOON -->
+          <div class="playlist-item coming-soon">
+            <div class="item-thumb" style="background:#1a2030; display:flex; align-items:center; justify-content:center;">
+              <i class="fa-solid fa-video" style="color:#334155; font-size:18px;"></i>
+            </div>
+            <div class="item-info">
+              <div class="item-title" style="color:#475569;">Loan Cycle #24 — Women Entrepreneurs</div>
+              <div class="item-meta"><i class="fa-solid fa-clock"></i> Coming soon</div>
+            </div>
+            <span class="coming-soon-tag">Soon</span>
+          </div>
+
+          <div class="playlist-item coming-soon">
+            <div class="item-thumb" style="background:#1a2030; display:flex; align-items:center; justify-content:center;">
+              <i class="fa-solid fa-video" style="color:#334155; font-size:18px;"></i>
+            </div>
+            <div class="item-info">
+              <div class="item-title" style="color:#475569;">Back-to-School Distribution 2024</div>
+              <div class="item-meta"><i class="fa-solid fa-clock"></i> Coming soon</div>
+            </div>
+            <span class="coming-soon-tag">Soon</span>
+          </div>
+
+          <div class="playlist-item coming-soon">
+            <div class="item-thumb" style="background:#1a2030; display:flex; align-items:center; justify-content:center;">
+              <i class="fa-solid fa-video" style="color:#334155; font-size:18px;"></i>
+            </div>
+            <div class="item-info">
+              <div class="item-title" style="color:#475569;">The KETAAKETI Partnership Story</div>
+              <div class="item-meta"><i class="fa-solid fa-clock"></i> Coming soon</div>
+            </div>
+            <span class="coming-soon-tag">Soon</span>
+          </div>
+
+        </div>
+
+        <!-- ADD VIDEO NOTE -->
+        <div class="add-video-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <p><strong>Adding more videos:</strong> Paste any YouTube link in the HTML to expand the playlist.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STATS STRIP ===== -->
+    <div class="stats-strip">
+      <div class="stat-box">
+        <span class="stat-box-num">2,700</span>
+        <span class="stat-box-label">Families Supported</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">46</span>
+        <span class="stat-box-label">Villages Reached</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">300+</span>
+        <span class="stat-box-label">Students Supplied</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">0%</span>
+        <span class="stat-box-label">Interest Rate</span>
+      </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <p class="footer-brand">MINDOKATIE SALONE</p>
+      <p class="footer-sub">Primary Partner of <b>KETAAKETI Germany</b></p>
+      <div class="footer-social">
+        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2024 Mindokatie Sierra Leone. Moving Sierra Leone Forward.</p>
+    </footer>
+
+    <script>
+      /* ===== PLAYLIST SWITCHER ===== */
+      function loadVideo(el) {
+        if (el.classList.contains("coming-soon")) return;
+
+        const id    = el.dataset.id;
+        const title = el.dataset.title;
+        const desc  = el.dataset.desc;
+        const year  = el.dataset.year;
+        const yt    = el.dataset.yt;
+
+        // Update iframe
+        document.getElementById("mainPlayer").src =
+          `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&color=white&autoplay=1`;
+
+        // Update info panel
+        document.getElementById("playerTitle").textContent = title;
+        document.getElementById("playerDesc").textContent  = desc;
+        document.getElementById("ytDirectLink").href       = yt;
+
+        // Update active state
+        document.querySelectorAll(".playlist-item").forEach(i => i.classList.remove("active"));
+        el.classList.add("active");
+
+        // Scroll player into view on mobile
+        document.querySelector(".featured-player").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* ===== MOBILE NAV ===== */
+      function toggleMenu() {
+        document.getElementById("mobileMenu").classList.toggle("active");
+      }
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobileMenu").classList.remove("active");
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!document.querySelector("nav").contains(e.target)) {
+          document.getElementById("mobileMenu").classList.remove("active");
+        }
+      });
+
+      /* ===== HOW TO ADD MORE VIDEOS =====
+        To add a new video to the playlist:
+
+        1. Find your YouTube video ID (the part after "v=" or the short code after "youtu.be/")
+           Example: https://youtu.be/ABC123xyz  →  ID is "ABC123xyz"
+
+        2. Get the thumbnail URL:
+           https://img.youtube.com/vi/YOUR_VIDEO_ID/mqdefault.jpg
+
+        3. Copy the playlist-item block below and paste it inside #playlistScroll,
+           filling in your data-* attributes:
+
+        <div class="playlist-item"
+          data-id="YOUR_VIDEO_ID"
+          data-title="Your Video Title"
+          data-desc="A short description of what this video is about."
+          data-year="2024"
+          data-yt="https://youtu.be/YOUR_VIDEO_ID"
+          onclick="loadVideo(this)">
+          <div class="item-thumb">
+            <img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/mqdefault.jpg" alt="Thumbnail" />
+            <div class="item-thumb-overlay"><i class="fa-solid fa-play"></i></div>
+          </div>
+          <div class="item-info">
+            <div class="item-title">Your Video Title</div>
+            <div class="item-meta"><i class="fa-solid fa-calendar"></i> 2024</div>
+          </div>
+        </div>
+
+        ===== END INSTRUCTIONS ===== */
+    </script>
+  </body>
+</html>
