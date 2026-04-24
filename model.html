@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Model | Mindokatie Salone</title>
 
-    <link href="https://cloudflare.com" rel="stylesheet" />
+    <!-- Font Awesome Icons - FIXED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
       /* --- BRAND DESIGN SYSTEM (Same as Index) --- */
@@ -31,8 +32,9 @@
 
       /* NAVIGATION & LOGO */
       nav {
-        background: var(--white);
-        padding: 10px 8%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 12px 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -41,22 +43,31 @@
         top: 0;
         z-index: 2000;
       }
+
       .logo-box {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-decoration: none;
+        gap: 4px;
       }
+
+      .logo-box svg {
+        width: 35px;
+        height: 35px;
+      }
+
       .logo-box span {
-        font-size: 18px;
+        font-size: clamp(14px, 3vw, 18px);
         font-weight: 900;
         letter-spacing: -0.5px;
         line-height: 1;
-        margin-top: 5px;
       }
+
       .logo-box span b {
         color: var(--brand-green);
       }
+
       .logo-box span i {
         color: var(--brand-blue);
         font-style: normal;
@@ -64,72 +75,163 @@
 
       .nav-links {
         display: flex;
-        gap: 30px;
+        gap: clamp(15px, 2vw, 30px);
         align-items: center;
       }
+
       .nav-links a {
         text-decoration: none;
         color: var(--text-muted);
         font-weight: 700;
-        font-size: 13px;
+        font-size: clamp(11px, 1.2vw, 13px);
         text-transform: uppercase;
+        transition: 0.3s;
       }
+
+      .nav-links a:hover,
       .nav-links a.active {
         color: var(--brand-green);
         border-bottom: 2px solid var(--brand-green);
         padding-bottom: 4px;
       }
+
       .mobile-btn {
         display: none;
         background: none;
         border: none;
         font-size: 24px;
+        color: var(--deep-navy);
         cursor: pointer;
+        padding: 8px;
+        z-index: 2001;
+      }
+
+      /* MOBILE MENU - IMPROVED */
+      #mobileMenu {
+        display: none;
+        background: white;
+        width: 100%;
+        position: fixed;
+        top: 55px;
+        left: 0;
+        right: 0;
+        padding: 0;
+        max-height: calc(100vh - 55px);
+        overflow-y: auto;
+        border-bottom: 3px solid var(--brand-green);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        z-index: 1999;
+        animation: slideDown 0.3s ease;
+      }
+
+      #mobileMenu.active {
+        display: block !important;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #mobileMenu a {
+        display: block;
+        padding: 16px 5%;
+        text-decoration: none;
+        font-weight: 700;
+        color: var(--deep-navy);
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 15px;
+        transition: 0.2s;
+      }
+
+      #mobileMenu a:first-child {
+        color: var(--brand-green);
+      }
+
+      #mobileMenu a.active {
+        background: var(--bg-light);
+        color: var(--brand-green);
+        font-weight: 800;
+      }
+
+      #mobileMenu a:hover {
+        background: var(--bg-light);
+        color: var(--brand-green);
       }
 
       /* HEADER */
       .page-header {
         background: var(--deep-navy);
         color: var(--white);
-        padding: 80px 8%;
+        padding: clamp(50px, 8vw, 80px) 8%;
         text-align: center;
       }
+
       .page-header h1 {
-        font-size: clamp(32px, 5vw, 48px);
+        font-size: clamp(28px, 6vw, 48px);
         margin-bottom: 15px;
       }
+
       .page-header p {
-        font-size: 18px;
+        font-size: clamp(16px, 2vw, 18px);
         opacity: 0.8;
         max-width: 700px;
         margin: 0 auto;
+        line-height: 1.6;
       }
 
       /* MODEL CONTENT */
       .section {
-        padding: 80px 8%;
+        padding: clamp(40px, 8vw, 80px) clamp(5%, 8vw, 8%);
       }
+
       .flex-box {
         display: flex;
-        gap: 60px;
+        gap: clamp(30px, 5vw, 60px);
         align-items: center;
         max-width: 1200px;
         margin: 0 auto;
-        margin-bottom: 80px;
+        margin-bottom: clamp(50px, 8vw, 80px);
       }
+
       .flex-box:nth-child(even) {
         flex-direction: row-reverse;
       }
+
       .text-side {
         flex: 1;
       }
+
+      .text-side h2 {
+        font-size: clamp(24px, 4vw, 32px);
+        margin-bottom: 20px;
+      }
+
+      .text-side p {
+        font-size: clamp(14px, 1.5vw, 16px);
+        margin-bottom: 20px;
+        line-height: 1.7;
+      }
+
+      .text-side ul li {
+        font-size: clamp(14px, 1.5vw, 16px);
+        margin-bottom: 12px;
+      }
+
       .img-side {
         flex: 1;
-        height: 400px;
+        height: clamp(300px, 50vw, 400px);
         border-radius: 30px;
         overflow: hidden;
         background: #e2e8f0;
       }
+
       .img-side img {
         width: 100%;
         height: 100%;
@@ -139,16 +241,23 @@
       .step-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        gap: clamp(20px, 4vw, 30px);
         margin-top: 50px;
       }
+
       .step-card {
         background: var(--bg-light);
-        padding: 40px;
+        padding: clamp(20px, 4vw, 40px);
         border-radius: 24px;
         text-align: center;
         border: 1px solid #e2e8f0;
+        transition: 0.3s;
       }
+
+      .step-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
       .step-icon {
         width: 60px;
         height: 60px;
@@ -163,39 +272,113 @@
         font-weight: 900;
       }
 
-      /* MOBILE MENU */
-      #mobileMenu {
-        display: none;
-        background: white;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 20px 8%;
-        border-bottom: 3px solid var(--brand-green);
-      }
-      #mobileMenu a {
-        display: block;
-        padding: 15px 0;
-        text-decoration: none;
-        font-weight: 800;
+      .step-card h4 {
+        font-size: clamp(16px, 2vw, 18px);
+        margin-bottom: 10px;
         color: var(--deep-navy);
-        border-bottom: 1px solid #f1f5f9;
       }
 
-      @media (max-width: 900px) {
-        .flex-box {
+      .step-card p {
+        font-size: clamp(13px, 1.5vw, 14px);
+        color: var(--text-muted);
+      }
+
+      .cycle-heading {
+        text-align: center;
+        font-size: clamp(24px, 5vw, 36px);
+        margin-bottom: 30px;
+        color: var(--deep-navy);
+      }
+
+      /* FOOTER */
+      footer {
+        padding: clamp(40px, 8vw, 60px) 8%;
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        background: var(--bg-light);
+      }
+
+      footer p {
+        font-size: clamp(12px, 1.2vw, 14px);
+      }
+
+      footer a {
+        color: var(--brand-blue);
+        transition: 0.3s;
+      }
+
+      footer a:hover {
+        color: var(--brand-green);
+      }
+
+      /* RESPONSIVENESS */
+      @media (max-width: 768px) {
+        .flex-box,
+        .flex-box:nth-child(even) {
           flex-direction: column !important;
           text-align: center;
+          gap: clamp(20px, 5vw, 40px);
         }
+
         .nav-links {
           display: none;
         }
+
         .mobile-btn {
           display: block;
         }
+
         .step-grid {
           grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 10px 4%;
+        }
+
+        .logo-box svg {
+          width: 30px;
+          height: 30px;
+        }
+
+        .page-header {
+          padding: 40px 4%;
+        }
+
+        .section {
+          padding: clamp(30px, 5vw, 60px) 4%;
+        }
+
+        .text-side h2 {
+          font-size: 20px;
+        }
+
+        .text-side p,
+        .text-side ul li {
+          font-size: 14px;
+        }
+
+        .img-side {
+          height: clamp(250px, 70vw, 350px);
+          border-radius: 16px;
+        }
+
+        .cycle-heading {
+          font-size: 22px;
+          margin-bottom: 20px;
+        }
+
+        #mobileMenu {
+          top: 50px;
+          max-height: calc(100vh - 50px);
+        }
+
+        #mobileMenu a {
+          padding: 14px 4%;
+          font-size: 14px;
         }
       }
     </style>
@@ -204,11 +387,9 @@
     <nav>
       <a href="index.html" class="logo-box">
         <svg
-          width="40"
-          height="40"
           viewBox="0 0 100 100"
           fill="none"
-          xmlns="http://w3.org"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <circle
             cx="50"
@@ -237,13 +418,13 @@
         <a href="contact.html">Contact Us</a>
       </div>
 
-      <button class="mobile-btn" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars-staggered"></i>
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+        ☰
       </button>
 
       <div id="mobileMenu">
         <a href="index.html">Home</a>
-        <a href="model.html">Our Model</a>
+        <a href="model.html" class="active">Our Model</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact Us</a>
       </div>
@@ -260,23 +441,17 @@
     <section class="section">
       <div class="flex-box">
         <div class="text-side">
-          <h2
-            style="
-              font-size: 32px;
-              margin-bottom: 20px;
-              color: var(--brand-green);
-            "
-          >
+          <h2 style="color: var(--brand-green)">
             The KETAAKETI Partnership
           </h2>
-          <p style="color: var(--text-muted); margin-bottom: 20px">
+          <p>
             Mindokatie implements a unique financing concept where the poorest
             families receive support to build independent futures. We follow the
             core principle of <b>self-determination</b>: our local team in
             Kabala decides how funds are distributed, ensuring aid is culturally
             and socially relevant.
           </p>
-          <p style="color: var(--text-muted)">
+          <p>
             This partnership allows for 100% of project donations to reach
             Sierra Leone, with zero administrative overhead being deducted from
             donor funds.
@@ -289,28 +464,16 @@
 
       <div class="flex-box">
         <div class="text-side">
-          <h2
-            style="
-              font-size: 32px;
-              margin-bottom: 20px;
-              color: var(--brand-blue);
-            "
-          >
+          <h2 style="color: var(--brand-blue)">
             0% Interest Micro-Loans
           </h2>
-          <p style="color: var(--text-muted); margin-bottom: 20px">
+          <p>
             We empower women by providing small, interest-free startup capital
             for businesses. These loans are not a "debt trap"—they are a bridge
             to independence. As businesses grow, the profits are used by the
-            families to pay for their children’s secondary school costs.
+            families to pay for their children's secondary school costs.
           </p>
-          <ul
-            style="
-              list-style: none;
-              color: var(--brand-blue);
-              font-weight: bold;
-            "
-          >
+          <ul style="list-style: none; color: var(--brand-blue); font-weight: bold">
             <li>
               <i class="fa-solid fa-check-circle"></i> No predatory interest
               rates
@@ -330,29 +493,29 @@
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 100px">
-        <h2 style="font-size: 36px">The Cycle of Growth</h2>
+      <div style="text-align: center; margin-top: clamp(60px, 8vw, 100px)">
+        <h2 class="cycle-heading">The Cycle of Growth</h2>
         <div class="step-grid">
           <div class="step-card">
             <div class="step-icon">1</div>
-            <h4 style="margin-bottom: 10px">Startup Loan</h4>
-            <p style="font-size: 14px; color: var(--text-muted)">
+            <h4>Startup Loan</h4>
+            <p>
               Mothers in Kabala receive zero-interest capital to launch
               small-scale market or farm businesses.
             </p>
           </div>
           <div class="step-card">
             <div class="step-icon">2</div>
-            <h4 style="margin-bottom: 10px">Family Profit</h4>
-            <p style="font-size: 14px; color: var(--text-muted)">
+            <h4>Family Profit</h4>
+            <p>
               As the business earns, the family achieves food security and a
               stable daily income.
             </p>
           </div>
           <div class="step-card">
             <div class="step-icon">3</div>
-            <h4 style="margin-bottom: 10px">School Support</h4>
-            <p style="font-size: 14px; color: var(--text-muted)">
+            <h4>School Support</h4>
+            <p>
               Business profits pay for uniforms and books, ensuring the next
               generation finishes school.
             </p>
@@ -361,47 +524,45 @@
       </div>
     </section>
 
-    <footer
-      style="
-        padding: 60px 8%;
-        text-align: center;
-        border-top: 1px solid #e2e8f0;
-        background: var(--bg-light);
-      "
-    >
-      <p
-        style="font-weight: 800; color: var(--brand-green); margin-bottom: 10px"
-      >
+    <footer>
+      <p style="font-weight: 800; color: var(--brand-green); margin-bottom: 10px">
         MINDOKATIE SALONE
       </p>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px">
+      <p style="margin-bottom: 20px">
         Primary Partner of <b>KETAAKETI Germany</b>
       </p>
-      <div
-        style="
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-          font-size: 20px;
-        "
-      >
-        <a href="#" style="color: var(--brand-blue)"
-          ><i class="fa-brands fa-whatsapp"></i
-        ></a>
-        <a href="#" style="color: var(--brand-blue)"
-          ><i class="fa-brands fa-facebook"></i
-        ></a>
+      <div style="display: flex; justify-content: center; gap: 20px; font-size: clamp(18px, 3vw, 20px); margin-bottom: 20px">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
       </div>
-      <p style="margin-top: 30px; font-size: 12px; color: #94a3b8">
+      <p style="color: #94a3b8">
         &copy; 2024 Mindokatie Sierra Leone. Moving Sierra Leone Forward.
       </p>
     </footer>
 
     <script>
       function toggleMenu() {
-        var menu = document.getElementById("mobileMenu");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("active");
       }
+
+      // Close menu when clicking a link
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobileMenu").classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        const menu = document.getElementById("mobileMenu");
+        const btn = document.querySelector(".mobile-btn");
+        const nav = document.querySelector("nav");
+        
+        if (!nav.contains(e.target)) {
+          menu.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>
