@@ -102,6 +102,8 @@
         box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
         transition: 0.3s;
         font-size: clamp(11px, 1.2vw, 13px);
+        display: inline-block;
+        text-decoration: none;
       }
 
       .btn-cta:hover {
@@ -117,6 +119,7 @@
         color: var(--deep-navy);
         cursor: pointer;
         padding: 8px;
+        z-index: 2001;
       }
 
       /* HERO SECTION */
@@ -166,6 +169,7 @@
         text-decoration: none;
         font-size: clamp(14px, 1.5vw, 16px);
         transition: 0.3s;
+        display: inline-block;
       }
 
       .hero-buttons .btn-cta {
@@ -246,11 +250,11 @@
         background: white;
         width: 100%;
         position: fixed;
-        top: 60px;
+        top: 55px;
         left: 0;
         right: 0;
         padding: 0;
-        max-height: calc(100vh - 60px);
+        max-height: calc(100vh - 55px);
         overflow-y: auto;
         border-bottom: 3px solid var(--brand-green);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -259,7 +263,7 @@
       }
 
       #mobileMenu.active {
-        display: block;
+        display: block !important;
       }
 
       @keyframes slideDown {
@@ -284,10 +288,25 @@
         transition: 0.2s;
       }
 
+      #mobileMenu a:first-child {
+        color: var(--brand-green);
+      }
+
+      #mobileMenu a:last-child {
+        background: var(--brand-blue);
+        color: white;
+        font-weight: 800;
+        border: none;
+      }
+
       #mobileMenu a:hover,
       #mobileMenu a:active {
         background: var(--bg-light);
         color: var(--brand-green);
+      }
+
+      #mobileMenu a:last-child:hover {
+        background: #1d4ed8;
       }
 
       /* FOOTER */
@@ -384,6 +403,11 @@
 
         .mobile-btn {
           font-size: 20px;
+        }
+
+        #mobileMenu {
+          top: 50px;
+          max-height: calc(100vh - 50px);
         }
 
         #mobileMenu a {
@@ -508,7 +532,9 @@
       document.addEventListener("click", (e) => {
         const menu = document.getElementById("mobileMenu");
         const btn = document.querySelector(".mobile-btn");
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        const nav = document.querySelector("nav");
+        
+        if (!nav.contains(e.target)) {
           menu.classList.remove("active");
         }
       });
