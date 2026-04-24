@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mindokatie Salone | Moving Sierra Leone Forward</title>
 
-    <!-- Professional Icons -->
-    <link href="https://cloudflare.com" rel="stylesheet" />
+    <!-- Font Awesome Icons - FIXED -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
       /* --- BRAND DESIGN SYSTEM --- */
@@ -24,12 +24,9 @@
         padding: 0;
         box-sizing: border-box;
       }
+      
       body {
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          sans-serif;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
         color: var(--deep-navy);
         line-height: 1.6;
         overflow-x: hidden;
@@ -39,7 +36,7 @@
       nav {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
-        padding: 10px 8%;
+        padding: 12px 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -54,17 +51,25 @@
         flex-direction: column;
         align-items: center;
         text-decoration: none;
+        gap: 4px;
       }
+
+      .logo-box svg {
+        width: 35px;
+        height: 35px;
+      }
+
       .logo-box span {
-        font-size: 18px;
+        font-size: clamp(14px, 3vw, 18px);
         font-weight: 900;
         letter-spacing: -0.5px;
         line-height: 1;
-        margin-top: 5px;
       }
+
       .logo-box span b {
         color: var(--brand-green);
       }
+
       .logo-box span i {
         color: var(--brand-blue);
         font-style: normal;
@@ -72,26 +77,38 @@
 
       .nav-links {
         display: flex;
-        gap: 30px;
+        gap: clamp(15px, 2vw, 30px);
         align-items: center;
       }
+
       .nav-links a {
         text-decoration: none;
         color: var(--text-muted);
         font-weight: 700;
-        font-size: 13px;
+        font-size: clamp(11px, 1.2vw, 13px);
         text-transform: uppercase;
         transition: 0.3s;
       }
+
       .nav-links a:hover {
         color: var(--brand-green);
       }
+
       .btn-cta {
         background: var(--brand-blue);
         color: white !important;
-        padding: 10px 24px;
+        padding: 10px 20px;
         border-radius: 50px;
         box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+        transition: 0.3s;
+        font-size: clamp(11px, 1.2vw, 13px);
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
       }
 
       .mobile-btn {
@@ -101,6 +118,8 @@
         font-size: 24px;
         color: var(--deep-navy);
         cursor: pointer;
+        padding: 8px;
+        z-index: 2001;
       }
 
       /* HERO SECTION */
@@ -108,105 +127,292 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 60px 8%;
-        min-height: 80vh;
-        gap: 40px;
+        padding: clamp(40px, 8vw, 60px) clamp(5%, 8vw, 8%);
+        min-height: auto;
+        gap: clamp(20px, 4vw, 40px);
       }
+
       .hero-content {
         flex: 1;
       }
+
       .hero-content h1 {
-        font-size: clamp(36px, 5vw, 60px);
+        font-size: clamp(28px, 6vw, 60px);
         font-weight: 900;
-        line-height: 1.1;
-        margin-bottom: 24px;
+        line-height: 1.15;
+        margin-bottom: 20px;
       }
+
       .hero-content h1 em {
         color: var(--brand-green);
         font-style: normal;
       }
+
       .hero-content p {
-        font-size: 18px;
+        font-size: clamp(16px, 2vw, 18px);
         color: var(--text-muted);
-        margin-bottom: 32px;
+        margin-bottom: 24px;
         max-width: 500px;
+        line-height: 1.7;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .hero-buttons a {
+        padding: 14px 24px;
+        font-weight: 800;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: clamp(14px, 1.5vw, 16px);
+        transition: 0.3s;
+        display: inline-block;
+      }
+
+      .hero-buttons .btn-cta {
+        padding: 14px 24px;
+      }
+
+      .hero-buttons .secondary-btn {
+        color: var(--deep-navy);
+        border: 2px solid #cbd5e1;
+        background: transparent;
+        font-weight: 700;
+      }
+
+      .hero-buttons .secondary-btn:hover {
+        border-color: var(--brand-green);
+        color: var(--brand-green);
       }
 
       .hero-img {
         flex: 0.8;
-        height: 500px;
-        border-radius: 40px;
+        width: 100%;
+        height: clamp(300px, 50vw, 500px);
+        border-radius: 24px;
         overflow: hidden;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
       }
+
       .hero-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      /* IMPACT CARDS (BEST PRACTICE) */
+      /* IMPACT CARDS */
       .impact-grid {
-        padding: 80px 8%;
+        padding: clamp(40px, 8vw, 80px) clamp(5%, 8vw, 8%);
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: clamp(20px, 4vw, 30px);
         background: var(--bg-light);
       }
+
       .impact-card {
         background: var(--white);
-        padding: 40px;
-        border-radius: 24px;
+        padding: clamp(24px, 5vw, 40px);
+        border-radius: 20px;
         border: 1px solid #e2e8f0;
-        transition: 0.3s;
+        transition: 0.3s ease;
       }
+
       .impact-card:hover {
         transform: translateY(-8px);
         border-color: var(--brand-blue);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
       }
+
       .impact-card i {
-        font-size: 32px;
-        margin-bottom: 20px;
+        font-size: clamp(28px, 5vw, 32px);
+        margin-bottom: 16px;
         display: block;
       }
 
-      /* MOBILE MENU */
+      .impact-card h3 {
+        font-size: clamp(16px, 2vw, 20px);
+        margin-bottom: 12px;
+        color: var(--deep-navy);
+      }
+
+      .impact-card p {
+        font-size: clamp(14px, 1.5vw, 16px);
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* MOBILE MENU - IMPROVED */
       #mobileMenu {
         display: none;
         background: white;
         width: 100%;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 55px;
         left: 0;
-        padding: 20px 8%;
+        right: 0;
+        padding: 0;
+        max-height: calc(100vh - 55px);
+        overflow-y: auto;
         border-bottom: 3px solid var(--brand-green);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        z-index: 1999;
+        animation: slideDown 0.3s ease;
       }
+
+      #mobileMenu.active {
+        display: block !important;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       #mobileMenu a {
         display: block;
-        padding: 15px 0;
+        padding: 16px 5%;
         text-decoration: none;
-        font-weight: 800;
+        font-weight: 700;
         color: var(--deep-navy);
         border-bottom: 1px solid #f1f5f9;
+        font-size: 15px;
+        transition: 0.2s;
+      }
+
+      #mobileMenu a:first-child {
+        color: var(--brand-green);
+      }
+
+      #mobileMenu a:last-child {
+        background: var(--brand-blue);
+        color: white;
+        font-weight: 800;
+        border: none;
+      }
+
+      #mobileMenu a:hover,
+      #mobileMenu a:active {
+        background: var(--bg-light);
+        color: var(--brand-green);
+      }
+
+      #mobileMenu a:last-child:hover {
+        background: #1d4ed8;
+      }
+
+      /* FOOTER */
+      footer {
+        padding: clamp(24px, 5vw, 40px);
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        color: var(--text-muted);
+        font-size: clamp(12px, 1.2vw, 14px);
       }
 
       /* RESPONSIVENESS */
-      @media (max-width: 960px) {
+      @media (max-width: 768px) {
         .hero {
           flex-direction: column;
           text-align: center;
-          padding-top: 40px;
+          padding-top: 30px;
         }
+
+        .hero-content h1 {
+          margin-bottom: 16px;
+        }
+
         .hero-img {
-          width: 100%;
-          height: 350px;
+          height: clamp(280px, 60vw, 400px);
+          border-radius: 16px;
         }
+
         .nav-links {
           display: none;
         }
+
         .mobile-btn {
           display: block;
+        }
+
+        .impact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .hero-buttons a {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 10px 4%;
+        }
+
+        .logo-box svg {
+          width: 30px;
+          height: 30px;
+        }
+
+        .hero {
+          padding: 20px 4%;
+        }
+
+        .hero-content h1 {
+          font-size: clamp(24px, 6vw, 40px);
+          margin-bottom: 12px;
+        }
+
+        .hero-content p {
+          font-size: clamp(14px, 2vw, 16px);
+          margin-bottom: 16px;
+        }
+
+        .hero-img {
+          height: clamp(240px, 70vw, 350px);
+          border-radius: 12px;
+        }
+
+        .impact-grid {
+          padding: 30px 4%;
+          gap: 16px;
+        }
+
+        .impact-card {
+          padding: 20px;
+          border-radius: 16px;
+        }
+
+        .impact-card h3 {
+          font-size: 16px;
+        }
+
+        .mobile-btn {
+          font-size: 20px;
+        }
+
+        #mobileMenu {
+          top: 50px;
+          max-height: calc(100vh - 50px);
+        }
+
+        #mobileMenu a {
+          padding: 14px 4%;
+          font-size: 14px;
         }
       }
     </style>
@@ -214,13 +420,10 @@
   <body>
     <nav>
       <a href="index.html" class="logo-box">
-        <!-- Your Vertical Logo (Using SVG for maximum quality) -->
         <svg
-          width="40"
-          height="40"
           viewBox="0 0 100 100"
           fill="none"
-          xmlns="http://w3.org"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <circle
             cx="50"
@@ -249,15 +452,15 @@
         <a href="contact.html" class="btn-cta">Partner With Us</a>
       </div>
 
-      <button class="mobile-btn" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars-staggered"></i>
+      <button class="mobile-btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+        ☰
       </button>
 
       <div id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="model.html">Our Model</a>
         <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="contact.html">Partner With Us</a>
       </div>
     </nav>
 
@@ -268,43 +471,22 @@
           Empowering the vulnerable in Koinadugu District through sustainable,
           0% interest micro-finance and educational support.
         </p>
-        <div style="display: flex; gap: 15px; flex-wrap: wrap">
-          <a
-            href="model.html"
-            class="btn-cta"
-            style="
-              padding: 16px 32px;
-              font-weight: 800;
-              border-radius: 12px;
-              text-decoration: none;
-            "
-            >How It Works</a
-          >
-          <a
-            href="blog.html"
-            style="
-              text-decoration: none;
-              color: var(--deep-navy);
-              font-weight: 700;
-              border: 1px solid #cbd5e1;
-              padding: 16px 32px;
-              border-radius: 12px;
-            "
-            >View Recent News</a
-          >
+        <div class="hero-buttons">
+          <a href="model.html" class="btn-cta">How It Works</a>
+          <a href="blog.html" class="secondary-btn">View Recent News</a>
         </div>
       </div>
       <div class="hero-img">
-        <img src="impact.jpg" alt="Adults in a school courtyard handing a child in a green uniform a bundle of supplies while other children watch, conveying hope and community support" />
+        <img 
+          src="impact.jpg" 
+          alt="Adults in a school courtyard handing a child in a green uniform a bundle of supplies while other children watch, conveying hope and community support"
+        />
       </div>
     </header>
 
     <section class="impact-grid">
       <div class="impact-card">
-        <i
-          class="fa-solid fa-graduation-cap"
-          style="color: var(--brand-green)"
-        ></i>
+        <i class="fa-solid fa-graduation-cap" style="color: var(--brand-green)"></i>
         <h3>Free Quality Education</h3>
         <p>
           Directly boosting the 468 SMS initiative and school material
@@ -312,10 +494,7 @@
         </p>
       </div>
       <div class="impact-card">
-        <i
-          class="fa-solid fa-hand-holding-heart"
-          style="color: var(--brand-blue)"
-        ></i>
+        <i class="fa-solid fa-hand-holding-heart" style="color: var(--brand-blue)"></i>
         <h3>Women's Empowerment</h3>
         <p>
           Self-determination model providing capital for mothers to build
@@ -323,10 +502,7 @@
         </p>
       </div>
       <div class="impact-card">
-        <i
-          class="fa-solid fa-shield-halved"
-          style="color: var(--brand-green)"
-        ></i>
+        <i class="fa-solid fa-shield-halved" style="color: var(--brand-green)"></i>
         <h3>Accountability</h3>
         <p>
           100% project-direct funding model in cooperation with international
@@ -335,25 +511,33 @@
       </div>
     </section>
 
-    <footer
-      style="
-        padding: 40px;
-        text-align: center;
-        border-top: 1px solid #e2e8f0;
-        color: var(--text-muted);
-        font-size: 14px;
-      "
-    >
-      <p>
-        © 2024 Mindokatie Salone | Kabala, Koinadugu District, Sierra Leone.
-      </p>
+    <footer>
+      <p>© 2024 Mindokatie Salone | Kabala, Koinadugu District, Sierra Leone.</p>
     </footer>
 
     <script>
       function toggleMenu() {
-        var menu = document.getElementById("mobileMenu");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("active");
       }
+
+      // Close menu when clicking a link
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobileMenu").classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        const menu = document.getElementById("mobileMenu");
+        const btn = document.querySelector(".mobile-btn");
+        const nav = document.querySelector("nav");
+        
+        if (!nav.contains(e.target)) {
+          menu.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>
